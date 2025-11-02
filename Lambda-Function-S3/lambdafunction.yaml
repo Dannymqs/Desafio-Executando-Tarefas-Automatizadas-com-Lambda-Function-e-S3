@@ -1,0 +1,20 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Template simples para criar um bucket S3 e uma função Lambda
+
+Resources:
+  MeuBucketS3:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: meu-bucket-desafio-dio
+
+  MinhaFuncaoLambda:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: MinhaFuncaoDesafioDIO
+      Handler: index.handler
+      Runtime: python3.11
+      Role: arn:aws:iam::123456789012:role/service-role/MinhaFuncaoLambdaRole
+      Code:
+        ZipFile: |
+          def handler(event, context):
+              print("Lambda executada com sucesso!")
